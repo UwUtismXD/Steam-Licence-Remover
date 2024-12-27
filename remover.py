@@ -2,7 +2,7 @@ import cv2
 import pyautogui
 import numpy as np
 import time
-import keyboard  # Import the keyboard library
+import keyboard
 
 def locate_and_click_button(button_image_path, scroll_if_not_found=False):
     # Take a screenshot of all monitors
@@ -76,18 +76,16 @@ def check_and_click_error_button(error_image_path, ok_button_image_path):
         return False
 
 # Path to the images of the buttons
-button_image_path_1 = "button1.png"  # Replace with the path to your first button image
-button_image_path_2 = "button2.png"  # Replace with the path to your second button image
-error_image_path = "error.png"  # Replace with the path to your error message image
-ok_button_image_path = "ok_button.png"  # Replace with the path to your OK button image
+button_image_path_1 = "button1.png"
+button_image_path_2 = "button2.png"
+error_image_path = "error.png"
+ok_button_image_path = "ok_button.png"
 
-# Wait for the screen to load
 time.sleep(2)
 
-# Get screen size
 screen_width, screen_height = pyautogui.size()
 
-# Repeat the process 50 times
+# change the 50 to however many times you wanna do this lol
 for _ in range(50):
     # Check if the spacebar is pressed to stop the script
     if keyboard.is_pressed('space'):
