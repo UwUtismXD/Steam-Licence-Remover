@@ -27,3 +27,4 @@ I'm not responsible for anything that happens to your Steam account or computer 
     ```sh
     python remover.py
     ```
+4. Press Space to stop the script at any time

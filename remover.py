@@ -2,8 +2,9 @@ import cv2
 import pyautogui
 import numpy as np
 import time
+import keyboard  # Import the keyboard library
 
-def locate_and_click_button(button_image_path):
+def locate_and_click_button(button_image_path, scroll_if_not_found=False):
     # Take a screenshot of all monitors
     screenshot = pyautogui.screenshot()
     # Convert the screenshot to a numpy array
@@ -35,8 +36,12 @@ def locate_and_click_button(button_image_path):
         pyautogui.moveTo(center_x, center_y)
         pyautogui.click()
         print(f"Clicked at {center_x}, {center_y}")
+        return True
     else:
         print("Button not found")
+        if scroll_if_not_found:
+            pyautogui.scroll(-500)  # Scroll down
+        return False
 
 def check_and_click_error_button(error_image_path, ok_button_image_path):
     # Take a screenshot of all monitors
@@ -79,10 +84,22 @@ ok_button_image_path = "ok_button.png"  # Replace with the path to your OK butto
 # Wait for the screen to load
 time.sleep(2)
 
-# Repeat the process 5 times
-for _ in range(5):
+# Get screen size
+screen_width, screen_height = pyautogui.size()
+
+# Repeat the process 50 times
+for _ in range(50):
+    # Check if the spacebar is pressed to stop the script
+    if keyboard.is_pressed('space'):
+        print("Script stopped by user.")
+        break
+    # Center the cursor on the screen
+    pyautogui.moveTo(screen_width // 2, screen_height // 2)
     # Locate and click the first button
-    locate_and_click_button(button_image_path_1)
+    if not locate_and_click_button(button_image_path_1, scroll_if_not_found=True):
+        # If the first button was not found, wait for a second and try again
+        time.sleep(1)
+        continue
     # Wait for a short duration before clicking the second button
     time.sleep(2)
     # Locate and click the second button
