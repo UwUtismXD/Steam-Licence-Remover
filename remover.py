@@ -107,4 +107,4 @@ for _ in range(50):
     # Check for error message and click OK button if found
     if check_and_click_error_button(error_image_path, ok_button_image_path):
         # Wait for 60 seconds if error message was found and OK button clicked
-        time.sleep(600)
+        time.sleep(60)
