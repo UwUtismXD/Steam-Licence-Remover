@@ -23,8 +23,13 @@ I'm not responsible for anything that happens to your Steam account or computer 
     ```
 
 ## How to Use
-3. Run the script:
+1. Open 
+    ```sh
+    https://store.steampowered.com/account/licenses/
+    ```
+2. Run the script:
     ```sh
     python remover.py
     ```
+3. Tab back to your browser where you opened the steam link
 4. Press Space to stop the script at any time
